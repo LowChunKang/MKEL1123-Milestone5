@@ -6,9 +6,9 @@ Group members:
 3. Ooi Chee Kean MKE201078
 
 Online Platform and Software involved in this project:
-1. Edge Impulse to train the model (Sign up for free at https://www.edgeimpulse.com/)
-2. STM32CudeIDE to deploy the trained model into microcontroller (Download and install from https://www.st.com/en/development-tools/stm32cubeide.html)
-3. PuTTY to display test result (Download and install from https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html)
+1. Edge Impulse to train the model. <br /> (Sign up for free at https://www.edgeimpulse.com/)
+2. STM32CudeIDE to deploy the trained model into microcontroller <br /> (Download and install from https://www.st.com/en/development-tools/stm32cubeide.html)
+3. PuTTY to display test result <br /> (Download and install from https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html)
 
 Build and train model from Edge Impulse:
 1. Obtain image dataset from online source. In this project, image dataset used was obtained from https://storage.googleapis.com/download.tensorflow.org/example_images/flower_photos.tgz.
