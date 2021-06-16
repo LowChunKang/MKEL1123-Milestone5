@@ -7,7 +7,7 @@ Group members:
 
 Online Platform and Software involved in this project:
 1. Edge Impulse to train the model. <br /> (Sign up for free at https://www.edgeimpulse.com/)
-2. STM32CudeIDE to deploy the trained model into microcontroller. <br /> (Download and install from https://www.st.com/en/development-tools/stm32cubeide.html)
+2. STM32CubeIDE to deploy the trained model into microcontroller. <br /> (Download and install from https://www.st.com/en/development-tools/stm32cubeide.html)
 3. PuTTY to display test result. <br /> (Download and install from https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html)
 
 Build and train model from Edge Impulse:
@@ -19,3 +19,14 @@ Build and train model from Edge Impulse:
 6. Start to train image in NN Classifier section. Set 100 training cycles, 0.0005 learning rate and 0.60 minimum confidence rating and click 'Start training'. Wait till the training process is done and check the accuracy of the training performance. <br /> ![image](https://user-images.githubusercontent.com/82256749/122097207-feebe280-ce41-11eb-945b-fbc61c151f26.png)
 7. If the training perfomance is satisfied, go to Model testing section to test the accuracy of the trained model on test data. Click 'Classify all' to start the process and check the validation results after the job is completed. <br /> ![image](https://user-images.githubusercontent.com/82256749/122097738-97826280-ce42-11eb-91e7-a145617eaa34.png)
 8. Deploy the impulse after the model is successfully trained. In Deployment section, choose 'Cube.MX CMSIS-PACK', and select 'Quantized (int8)' optimization. Finally, click 'Build' to download the output pack file. <br />  ![image](https://user-images.githubusercontent.com/82256749/122098528-8be36b80-ce43-11eb-96e1-7d21101d7eb5.png)![image](https://user-images.githubusercontent.com/82256749/122098578-9c93e180-ce43-11eb-8dfa-7700be397e5e.png)
+
+Deployed trained model into microcontroller by STM32CubeIDE:
+1. Start a new STM32 project in STM32Cube IDE software.
+2. Under Board Selector tab, find the model code of the microcontroller and click 'Next'. In this project, we used Nucleo-F446RE microntroller.
+3. Enter the project name and select 'C++' as targeted language. Then, click 'Finish'. If there is a pop up, click 'Yes' to initialize all peripherals with their default Mode.
+4. Open .ioc file, go to 'Pinout & Configuration' > 'Computing' > 'CRC' to enable 'Activavated' checkbox. <br /> ![image](https://user-images.githubusercontent.com/82256749/122222573-fac4d100-cee4-11eb-8921-61ecb2e7e7d3.png)
+5. Then, add in the pack downloaded from Edge Impulse to the project. Go to 'Help' > 'Manage Embedded Software Packages' > 'From Local...' and select the downloaded pack. Accept the license agreement and thepack will be installed. <br /> ![image](https://user-images.githubusercontent.com/82256749/122222796-2d6ec980-cee5-11eb-9284-5b426ed17b4a.png)
+6. After installing the pack, go back to .ioc file. This time goes to 'Pinout & Configuration' > 'Software packs' > 'Select components'. Select your project, expand the pack, and click a checkbox under 'Selection'. Then click 'OK' to close the window. <br /> ![image](https://user-images.githubusercontent.com/82256749/122224923-2943ab80-cee7-11eb-99d9-cac74449dfc7.png)
+7. Go back to 'Pinout & Configuration', under 'Additional software', click on the project name. enable a checkbox next under 'Mode'. <br /> ![image](https://user-images.githubusercontent.com/82256749/122226915-fbf7fd00-cee8-11eb-9187-f22ca28ba461.png)
+8. Click in the 'Project explorer' so the .ioc file loses focus. Press CTRL+S to save the workspace. This will regenerate the code and afterward, a 'Middleware' folder can be seen in the project explorer with your impulse and all required libraries. Rename the "main.c" file under Core/Src in "Project Explorer" to "main.cpp", as C++ language is preferred to be used. <br /> ![image](https://user-images.githubusercontent.com/82256749/122232464-d6212700-ceed-11eb-82e1-6e0d7f801c82.png)
+9. Edit the main.cpp script or copy from here. (
